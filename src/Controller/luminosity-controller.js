@@ -18,10 +18,10 @@ export default class LuminosityController {
 
     /**
      * 
-     * @param {number} channel
-     * @param {number} luminosity
+     * @param {any} body
      */
-    post(channel, luminosity) {
-        return { message: "TestPost!" }
+    update(body) {
+        console.log(body)
+        return { message: "test" }
     }
 }

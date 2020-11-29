@@ -3,8 +3,11 @@ import router from "./routes/routes.js";
 
 const app = express();
 
-router(app)
+app.use(express.urlencoded({extended: false}))
+app.use(express.json())
 
 app.listen(3000, () => {
     console.log("Server started !")
 })
+
+router(app)
