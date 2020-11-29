@@ -1,0 +1,18 @@
+{
+  "name": "ZSR-API",
+  "version": "1.0.0",
+  "description": "API of the Z-Sync Reworked application.",
+  "main": "index.js",
+  "repository": "https://github.com/antt0n/ZSR-API.git",
+  "author": "Antt0n / Antoine",
+  "license": "Apache 2.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ."
+  },
+  "dependencies": {
+    "express.js": "^1.0.0",
+    "node-hid": "^2.0.0-0"
+  },
+  "type": "module"
+}
