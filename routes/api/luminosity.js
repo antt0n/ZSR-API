@@ -13,7 +13,7 @@ export default function (router) {
     })
 
     router.post("/", (req, res) => {
-        res.send(new Controller().update(req.body))
+        new Controller().update(res, req.body)
     })
 
     return router;
