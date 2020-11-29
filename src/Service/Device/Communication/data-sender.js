@@ -1,9 +1,9 @@
-import DeviceManager from "./device-manager";
+import DeviceManager from "./device-manager.js";
 
 /**
  * Class for send data to the DeviceManager object
  */
-export default class DataSender {
+export default class {
 
     /**
      * @type {DeviceManager} 
@@ -19,7 +19,7 @@ export default class DataSender {
 
     /**
      * Method for send data to the DeviceManager
-     * @param {Array} data
+     * @param {Number[]} data
      */
     send(data) {
         const buffer = Buffer.alloc(66);

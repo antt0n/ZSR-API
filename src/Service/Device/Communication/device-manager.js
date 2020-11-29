@@ -5,7 +5,7 @@ import CommunicationError from "./communication-error.js"
 /**
  * Class to manage my connection to the device
  */
-export default class DeviceManager {
+export default class {
 
     /** 
      * @type {hid.HID}
@@ -17,7 +17,7 @@ export default class DeviceManager {
      */
     constructor() {
         this.device = new hid.HID(0x1c57, 0x7ed0);
-        this.device.pause();
+        this.pause();
 
         if (!this.device) throw new CommunicationError("Cannot find the device.")
     }
