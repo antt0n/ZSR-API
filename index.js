@@ -1,6 +1,12 @@
 import express from "express"
 import router from "./routes/routes.js";
 import badContentError from "./src/Http/Response/bad-content-error.js"
+import storageInit from "./storage/storage-init.js"
+
+import path from "path"
+global.__dirname = path.resolve();
+
+storageInit()
 
 const app = express();
 

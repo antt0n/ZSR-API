@@ -1,8 +1,4 @@
 import badContentError from "../Http/Response/bad-content-error.js"
-import DataSender from "../Service/Device/Communication/data-sender.js"
-import dataSender from "../Service/Device/Communication/data-sender.js"
-import DeviceManager from "../Service/Device/Communication/device-manager.js"
-import deviceManager from "../Service/Device/Communication/device-manager.js"
 
 /**
  * @typedef {Object} LuminosityControllerGetType
@@ -12,7 +8,7 @@ import deviceManager from "../Service/Device/Communication/device-manager.js"
 /**
  * 
  */
-export default class LuminosityController {
+export default class {
 
     /**
      * 
@@ -34,5 +30,6 @@ export default class LuminosityController {
             badContentError(res)
             return;
         }
+
     }
 }
