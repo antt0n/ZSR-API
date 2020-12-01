@@ -1,8 +1,6 @@
 import Channel from "../Entity/channel.js" 
 
 export default class {
-
-
     
     /**
      * 

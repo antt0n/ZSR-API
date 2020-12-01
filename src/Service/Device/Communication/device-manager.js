@@ -16,10 +16,13 @@ export default class {
      * @throws {CommunicationError} Errors happens when the device is not plugged in
      */
     constructor() {
-        this.device = new hid.HID(0x1c57, 0x7ed0);
-        this.pause();
+        let VID = 0x1c57;
+        let PID = 0x7ed0;
 
-        if (!this.device) throw new CommunicationError("Cannot find the device.")
+        if (hid.devices(VID, PID).length === 0) throw new CommunicationError("Cannot find the device.")
+
+        this.device = new hid.HID(VID, PID);
+        this.pause();
     }
 
     /**
