@@ -8,12 +8,12 @@ import Controller from "../../src/Controller/luminosity-controller.js"
  */
 export default function (router) {
 
-    router.get("/", (req, res) => {
-        res.send(new Controller().get())
+    router.get("/:channelId", (req, res) => {
+        new Controller().get(res, req.params.channelId)
     })
 
-    router.post("/", (req, res) => {
-        new Controller().update(res, req.body)
+    router.post("/:channelId", (req, res) => {
+        new Controller().update(res, req.params.channelId,req.body)
     })
 
     return router;

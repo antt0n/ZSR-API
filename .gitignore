@@ -3,7 +3,7 @@ node_modules
 /dist
 
 # storage file
-storage-file.json
+storage/storage-files/storage.json
 
 # local env files
 .env.local
@@ -23,3 +23,4 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+

@@ -3,7 +3,7 @@ import DeviceManager from "./device-manager.js";
 /**
  * Class for send data to the DeviceManager object
  */
-export default class {
+export default class DataSender {
 
     /**
      * @type {DeviceManager} 
@@ -19,7 +19,7 @@ export default class {
 
     /**
      * Method for send data to the DeviceManager
-     * @param {Number[]} data
+     * @param {number[]} data
      */
     send(data) {
         const buffer = Buffer.alloc(66);
@@ -32,3 +32,5 @@ export default class {
         this.connection.pause();
     }
 }
+
+export const dataSender = new DataSender(new DeviceManager())

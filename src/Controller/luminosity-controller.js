@@ -1,4 +1,8 @@
 import badContentError from "../Http/Response/bad-content-error.js"
+import notFoundError from "../Http/Response/not-found-error.js"
+import ChannelRepository from "../Repository/channel-repository.js"
+import RepositoryError from "../Repository/repository-error.js"
+import LuminositySender from "../Service/Device/Functionality/luminosity.js"
 
 /**
  * @typedef {Object} LuminosityControllerGetType
@@ -14,22 +18,29 @@ export default class {
      * 
      * @returns {LuminosityControllerGetType}
      */
-    get() {
-        return { message: "Salut!" }
+    get(res, channelId) {
+        try {
+            res.send(new ChannelRepository().read(channelId))
+        } 
+        catch(/** @type {RepositoryError} */ error) {
+            notFoundError(res)
+            return
+        }
     }
 
     /**
      * 
      * @param {any} res
+     * @param {number} channelId
      * @param {any} body
      */
-    update(res, body) {
-        const channel = parseInt(body.channel)
+    update(res, channelId, body) {
         const luminosity = parseInt(body.luminosity)
-        if (isNaN(channel) || isNaN(luminosity) || channel > 7 || channel < 0 || luminosity > 100 || luminosity < 0) {
+        if (isNaN(luminosity) || isNaN(channelId) || luminosity > 100 || luminosity < 0) {
             badContentError(res)
             return;
         }
-
+        new ChannelRepository().write(channelId, { luminosity: luminosity })
+        new LuminositySender().send(channelId, luminosity)
     }
 }
