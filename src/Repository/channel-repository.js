@@ -36,7 +36,10 @@ export default class {
     write(channelId, data) {
         const storageData = this.#getStorageData()
         storageData[channelId] = { ...storageData[channelId], ...data }
-        return fs.writeFileSync(storagePath(), JSON.stringify(storageData) )
+        try {
+            return fs.writeFileSync(storagePath(), JSON.stringify(storageData, null, 2) )
+        } catch(err) {
+            throw new RepositoryError("Write error.")
+        }
     }
-
 }

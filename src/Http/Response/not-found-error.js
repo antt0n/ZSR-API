@@ -1,5 +1,5 @@
 /**
- * Send a bad content error
+ * Send a not found error
  * @param {any} res
  */
 export default (res) => {

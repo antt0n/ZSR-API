@@ -10,6 +10,6 @@ export default class {
      * @param {number} mode
      */
     send(channel, mode) {
-        dataSender.send([/* CHANGE HERE*/, channel, mode])
+        dataSender.send([56, channel, mode])
     }
 }

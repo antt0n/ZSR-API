@@ -1,13 +1,13 @@
 import fs from "fs"
-import storagePath from "./storage-path.js"
+import storagePath, {storageDir} from "./storage-path.js"
 import StorageError from "./storage-error.js"
 
 /**
  * Check if the storage file exist and create him
  */
 export default function() {
-  if (!fs.existsSync(storagePath())){
-    fs.mkdirSync(storagePath());
+  if (!fs.existsSync(storageDir())){
+    fs.mkdirSync(storageDir());
   }
   fs.access(storagePath(), fs.F_OK, (err) => {
     if (!err) {
