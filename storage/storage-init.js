@@ -1,11 +1,14 @@
 import fs from "fs"
 import storagePath from "./storage-path.js"
+import StorageError from "./storage-error.js"
 
 /**
  * Check if the storage file exist and create him
  */
 export default function() {
-
+  if (!fs.existsSync(storagePath())){
+    fs.mkdirSync(storagePath());
+  }
   fs.access(storagePath(), fs.F_OK, (err) => {
     if (!err) {
       return
@@ -13,8 +16,6 @@ export default function() {
       fs.writeFileSync(storagePath(), "{}");
       return
     }
-    // Something to add here
-    console.error(err)
-    return
+    throw new StorageError("Storage initalization impossible.")
   })
 }
