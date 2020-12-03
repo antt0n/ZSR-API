@@ -31,6 +31,7 @@ export default class {
      * 
      * @param {number} channelId 
      * @param {(Channel|Object)} data 
+     * @returns {Channel}
      */
     write(channelId, data) {
         const storageData = this.#getStorageData()

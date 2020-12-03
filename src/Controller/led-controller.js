@@ -2,7 +2,6 @@ import badContentError from "../Http/Response/bad-content-error.js"
 import notFoundError from "../Http/Response/not-found-error.js"
 import ChannelRepository from "../Repository/channel-repository.js"
 import RepositoryError from "../Repository/repository-error.js"
-import LuminositySender from "../Service/Device/Functionality/luminosity.js"
 
 /**
  * 
@@ -10,13 +9,13 @@ import LuminositySender from "../Service/Device/Functionality/luminosity.js"
 export default class {
 
     /**
-     * Get luminosity data
+     * Get led number data
      */
     get(res, channelId) {
         try {
             const channelData = new ChannelRepository().read(channelId)
-            if (channelData.hasOwnProperty("luminosity"));
-                res.send(channelData.luminosity)
+            if (channelData.hasOwnProperty("ledNumber"));
+                res.send(channelData.ledNumber)
             res.send({})
         } 
         catch(/** @type {RepositoryError} */ error) {
@@ -31,12 +30,11 @@ export default class {
      * @param {any} body
      */
     update(res, channelId, body) {
-        const luminosity = parseInt(body.luminosity)
-        if (isNaN(luminosity) || isNaN(channelId) || luminosity > 100 || luminosity < 0) {
+        const ledNumber = parseInt(body.ledNumber)
+        if (isNaN(ledNumber) || isNaN(channelId)) {
             badContentError(res)
             return;
         }
-        new ChannelRepository().write(channelId, { luminosity: luminosity })
-        new LuminositySender().send(channelId, luminosity)
+        new ChannelRepository().write(channelId, { ledNumber: ledNumber })
     }
 }
