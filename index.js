@@ -2,6 +2,7 @@ import express from "express"
 import router from "./routes/routes.js";
 import badContentError from "./src/Http/Response/bad-content-error.js"
 import storageInit from "./storage/storage-init.js"
+import { dataSender } from "./src/Service/Device/Communication/data-sender.js"
 import path from "path"
 global.__dirname = path.resolve();
 
@@ -24,4 +25,10 @@ app.listen(3000, () => {
     console.log("Server started !")
 })
 
-router(app)
+if (dataSender) {
+  router(app)
+} else {
+  app.all('*', (req, res) => {
+    res.status(500).send({ error: "device error" });
+  })
+}

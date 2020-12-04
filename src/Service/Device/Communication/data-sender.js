@@ -33,4 +33,13 @@ export default class DataSender {
     }
 }
 
-export const dataSender = new DataSender(new DeviceManager())
+export function connectionInit() {
+    try {
+        return new DataSender(new DeviceManager())
+    } catch(err) {
+        console.error(err.name + ": " + err.message)
+        return false
+    }
+}
+
+export const dataSender = connectionInit()
