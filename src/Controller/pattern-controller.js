@@ -3,6 +3,7 @@ import notFoundError from "../Http/Response/not-found-error.js"
 import internalError from "../Http/Response/internal-error.js"
 import ChannelRepository from "../Repository/channel-repository.js"
 import PatternSender from "../Service/Device/Functionality/pattern.js"
+import LedController from "./led-controller.js"
 
 /**
  * 
@@ -36,31 +37,41 @@ export default class {
         let effect = body.effect
         let speed = body.speed
         let direction = body.direction
-        let colorMode = body.colorMode
-        let colors = [body.color1, body.color2, body.color3]
-        if (isNaN(channelId)) {
+        if (isNaN(channelId) || typeof (effect, speed, direction, colorMode) !== "string" || !(["LOW", "MEDIUM", "HIGH"].includes(speed.toUpperCase())) || !(["RIGHT", "LEFT"].includes(direction.toUpperCase())) || !([/* LIST OF EFFECTS HERE*/].includes(effect.toUpperCase()))) {
             badContentError(res)
             return;
         }
-        //let ledNumber = ;
 
-        switch (mode.toUpperCase()) {
-            case "DISABLE":
-                mode = 0
-                break;
-            case "NORMAL":
-                mode = 1
-                break;
-            case "SINK":
-                mode = 2
-                break;
-            default:
+        /* ENUM HERE */
+        switch (effect) {
+            case "RAINBOW":
+                effect = 0
+                break
+        }
+
+        let colorMode;
+        switch (effect.toUpperCase()) {
+            case "RAINBOW":
+            case "TEST":
+                colorMode = 0 /* RANDOM */
+                break
+            case "TATA":
+                colorMode = 1 /* ALTERNATING */
+        }
+        
+        if (colorMode === 1) {
+            let colors = [body.color1, body.color2, body.color3]
+            if (/* ADD HERE CHECK FOR ARRAYS RGB */){
                 badContentError(res)
                 return
+            }
         }
+        
+        let ledNumber = new LedController().get(channelId);
+
         try {
-            new ChannelRepository().write(channelId, { mode: mode })
-            new ModeSender().send(channelId, mode)
+            new ChannelRepository().write(pattern, { effect: effect, speed = speed, direction = direction, colorMode = colorMode /* ADD COLOR ARRAY IF NEEDED */ })
+            new PatternSender().send(channelId, mode)
             res.status(204).send()
         } 
         catch(err) {
