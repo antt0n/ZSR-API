@@ -34,7 +34,7 @@ export default class {
      */
     update(res, channelId, body) {
         let mode = body.mode
-        if (isNaN(channelId) || typeof mode !== "string" || !(["DISABLE", "NORMAL", "SINK"].includes(mode.toUpperCase())) ) {
+        if (isNaN(channelId) || typeof mode !== "string") {
             badContentError(res)
             return;
         }
