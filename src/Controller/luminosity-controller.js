@@ -5,7 +5,7 @@ import ChannelRepository from "../Repository/channel-repository.js"
 import LuminositySender from "../Service/Device/Functionality/luminosity.js"
 
 /**
- * 
+ * Controller for luminosity
  */
 export default class {
 
@@ -27,7 +27,7 @@ export default class {
     }
 
     /**
-     * 
+     * Update luminosity data
      * @param {any} res
      * @param {number} channelId
      * @param {any} body

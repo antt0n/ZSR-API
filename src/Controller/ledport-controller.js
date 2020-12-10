@@ -3,12 +3,12 @@ import internalError from "../Http/Response/internal-error.js"
 import LedportSender from "../Service/Device/Functionality/ledport.js"
 
 /**
- * 
+ * Controller for LedPortType
  */
 export default class {
 
     /**
-     * 
+     * Send LedPortType
      * @param {any} res
      * @param {number} channelId
      * @param {any} body

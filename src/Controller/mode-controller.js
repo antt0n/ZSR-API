@@ -5,12 +5,12 @@ import ChannelRepository from "../Repository/channel-repository.js"
 import ModeSender from "../Service/Device/Functionality/mode.js"
 
 /**
- * 
+ * Controller for mode
  */
 export default class {
 
     /**
-     * Get mode informations
+     * Get mode data
      */
     get(res, channelId) {
         try {
@@ -27,7 +27,7 @@ export default class {
     }
 
     /**
-     * 
+     * Update mode
      * @param {any} res
      * @param {number} channelId
      * @param {any} body

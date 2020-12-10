@@ -4,7 +4,7 @@ import internalError from "../Http/Response/internal-error.js"
 import ChannelRepository from "../Repository/channel-repository.js"
 
 /**
- * 
+ * Controller for led number
  */
 export default class {
 
@@ -26,7 +26,7 @@ export default class {
     }
 
     /**
-     * 
+     * Update led number for a channel
      * @param {any} res
      * @param {number} channelId
      * @param {any} body

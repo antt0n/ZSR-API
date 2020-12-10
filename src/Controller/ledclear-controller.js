@@ -4,12 +4,12 @@ import LedclearSender from "../Service/Device/Functionality/ledclear.js"
 import LedcleargroupSender from "../Service/Device/Functionality/ledcleargroup.js"
 
 /**
- * 
+ * Controller for clear led
  */
 export default class {
 
     /**
-     * 
+     * Send clear led (pattern / custom)
      * @param {any} res
      * @param {number} channelId
      * @param {any} body

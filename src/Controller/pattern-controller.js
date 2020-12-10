@@ -3,16 +3,15 @@ import notFoundError from "../Http/Response/not-found-error.js"
 import internalError from "../Http/Response/internal-error.js"
 import ChannelRepository from "../Repository/channel-repository.js"
 import PatternSender from "../Service/Device/Functionality/pattern.js"
-import LedController from "./led-controller.js"
 import RepositoryError from "../Repository/repository-error.js"
 
 /**
- * 
+ * Controller for pattern
  */
 export default class {
 
     /**
-     * Get pattern informations
+     * Get pattern data
      */
     get(res, channelId) {
         try {
@@ -29,7 +28,7 @@ export default class {
     }
 
     /**
-     * 
+     * Update pattern data
      * @param {any} res
      * @param {number} channelId
      * @param {any} body
