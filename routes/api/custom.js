@@ -1,10 +1,10 @@
 import { Router } from "express"
 
-import Controller from "../../src/Controller/luminosity-controller.js"
+import Controller from "../../src/Controller/custom-controller.js"
 /**
- * Creates the different api routes of the /api/luminosity/* endpoint
- * @param {Router} router Router of the /api/luminosity endpoint
- * @returns {Router} Router of the /api/luminosity endpoint
+ * Creates the different api routes of the /api/custom/* endpoint
+ * @param {Router} router Router of the /api/custom endpoint
+ * @returns {Router} Router of the /api/custom endpoint
  */
 export default function (router) {
 

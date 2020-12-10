@@ -13,7 +13,7 @@ export default function (router) {
     })
 
     router.post("/:channelId", (req, res) => {
-        new Controller().update(res, req.params.channelId,req.body)
+        new Controller().update(res, req.params.channelId, req.body)
     })
 
     return router;
