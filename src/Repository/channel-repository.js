@@ -1,16 +1,16 @@
 import fs from "fs"
-import Channel from "../Entity/channel.js" 
+import Channel from "../Entity/channel.js"
 import storagePath from "../../storage/storage-path.js"
 import RepositoryError from "./repository-error.js"
 
 export default class {
-    
+
     /**
      * Private method to get storage data
      * @returns {Object<number, Channel>}
      */
     #getStorageData() {
-        return JSON.parse( fs.readFileSync(storagePath()) )
+        return JSON.parse(fs.readFileSync(storagePath()))
     }
 
     /**
@@ -37,8 +37,8 @@ export default class {
         const storageData = this.#getStorageData()
         storageData[channelId] = { ...storageData[channelId], ...data }
         try {
-            return fs.writeFileSync(storagePath(), JSON.stringify(storageData, null, 2) )
-        } catch(err) {
+            return fs.writeFileSync(storagePath(), JSON.stringify(storageData, null, 2))
+        } catch (err) {
             throw new RepositoryError("Write error.")
         }
     }

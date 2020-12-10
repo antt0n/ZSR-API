@@ -22,7 +22,7 @@ export default function (router) {
   router.use("/ledclear", ledclear(Router()))
   router.use("/pattern", pattern(Router()))
   //router.use("/custom", custom(Router())) Not finished
-  
+
 
   return router;
 }

@@ -21,10 +21,10 @@ export default class {
         try {
             new LedportSender().send(channelId)
             res.status(204).send()
-        } 
-        catch(err) {
+        }
+        catch (err) {
             internalError(res)
             return
         }
-    } 
+    }
 }

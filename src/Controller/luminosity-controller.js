@@ -20,8 +20,8 @@ export default class {
                 return
             }
             res.send({})
-        } 
-        catch(/** @type {RepositoryError} */ error) {
+        }
+        catch (/** @type {RepositoryError} */ error) {
             notFoundError(res)
         }
     }
@@ -42,10 +42,10 @@ export default class {
             new ChannelRepository().write(channelId, { luminosity: luminosity })
             new LuminositySender().send(channelId, luminosity)
             res.status(204).send()
-        } 
-        catch(err) {
+        }
+        catch (err) {
             internalError(res)
             return
         }
-    } 
+    }
 }

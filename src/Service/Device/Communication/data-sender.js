@@ -36,7 +36,7 @@ export default class DataSender {
 export function connectionInit() {
     try {
         return new DataSender(new DeviceManager())
-    } catch(err) {
+    } catch (err) {
         console.error(err.name + ": " + err.message)
         return false
     }

@@ -27,8 +27,8 @@ export default class {
                 try {
                     new LedclearSender().send(channelId)
                     res.status(204).send()
-                } 
-                catch(err) {
+                }
+                catch (err) {
                     internalError(res)
                     return
                 }
@@ -40,8 +40,8 @@ export default class {
                     new LedclearSender().send(channelId)
                     new LedcleargroupSender().send(channelId)
                     res.status(204).send()
-                } 
-                catch(err) {
+                }
+                catch (err) {
                     internalError(res)
                     return
                 }
@@ -54,5 +54,5 @@ export default class {
 
         internalError(res)
         return
-    } 
+    }
 }

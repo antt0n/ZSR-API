@@ -17,10 +17,10 @@ export default class {
             if (channelData.hasOwnProperty("ledNumber")) {
                 res.send(channelData.ledNumber)
                 return
-            } 
+            }
             res.send({})
-        } 
-        catch(/** @type {RepositoryError} */ error) {
+        }
+        catch (/** @type {RepositoryError} */ error) {
             notFoundError(res)
         }
     }
@@ -40,8 +40,8 @@ export default class {
         try {
             new ChannelRepository().write(channelId, { ledNumber: ledNumber })
             res.status(204).send()
-        } 
-        catch(err) {
+        }
+        catch (err) {
             internalError(res)
             return
         }

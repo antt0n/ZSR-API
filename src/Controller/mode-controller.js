@@ -18,10 +18,10 @@ export default class {
             if (channelData.hasOwnProperty("mode")) {
                 res.send(channelData.mode)
                 return
-            }  
+            }
             res.send({})
-        } 
-        catch(/** @type {RepositoryError} */ error) {
+        }
+        catch (/** @type {RepositoryError} */ error) {
             notFoundError(res)
         }
     }
@@ -56,8 +56,8 @@ export default class {
             new ChannelRepository().write(channelId, { mode: mode })
             new ModeSender().send(channelId, mode)
             res.status(204).send()
-        } 
-        catch(err) {
+        }
+        catch (err) {
             internalError(res)
             return
         }

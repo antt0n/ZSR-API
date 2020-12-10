@@ -19,10 +19,10 @@ export default class {
             if (channelData.hasOwnProperty("pattern")) {
                 res.send(channelData.mode)
                 return
-            }  
+            }
             res.send({})
-        } 
-        catch(/** @type {RepositoryError} */ error) {
+        }
+        catch (/** @type {RepositoryError} */ error) {
             notFoundError(res)
         }
     }
@@ -115,18 +115,18 @@ export default class {
 
         let colors = []
         for (let step = 0; step < 4; step++) {
-        const counter = "color" + step.toString()
-        if (typeof body[counter] == "object") {
-            colors.push(body[counter])
-          }
+            const counter = "color" + step.toString()
+            if (typeof body[counter] == "object") {
+                colors.push(body[counter])
+            }
         }
         const RGB = ["red", "green", "blue"]
 
         for (const color of colors) {
             for (const colorRGB of RGB) {
-            if (!color.hasOwnProperty(colorRGB) || isNaN(color[colorRGB]) || color[colorRGB] > 255 || color[colorRGB] < 0) {
-                badContentError(res)
-                return
+                if (!color.hasOwnProperty(colorRGB) || isNaN(color[colorRGB]) || color[colorRGB] > 255 || color[colorRGB] < 0) {
+                    badContentError(res)
+                    return
                 }
             }
         }
@@ -150,8 +150,8 @@ export default class {
                 return
             }
             ledNumber = channelData.ledNumber
-        } 
-        catch(error) {
+        }
+        catch (error) {
             notFoundError(res)
             return
         }
@@ -159,21 +159,21 @@ export default class {
         // Send data
 
         try {
-            new ChannelRepository().write(channelId, 
-                { 
-                    pattern: { 
-                        effect: effect, 
-                        speed: speed, 
-                        direction: direction, 
+            new ChannelRepository().write(channelId,
+                {
+                    pattern: {
+                        effect: effect,
+                        speed: speed,
+                        direction: direction,
                         colorMode: colorMode,
                         colors: colors
-                    } 
-                } 
+                    }
+                }
             );
-            new PatternSender().send(channelId, {ledNumber: ledNumber, effect: effect, speed: speed, direction: direction, colorMode: colorMode, colors: colors} )
+            new PatternSender().send(channelId, { ledNumber: ledNumber, effect: effect, speed: speed, direction: direction, colorMode: colorMode, colors: colors })
             res.status(204).send()
-        } 
-        catch(err) {
+        }
+        catch (err) {
             console.log(err)
             internalError(res)
             return
